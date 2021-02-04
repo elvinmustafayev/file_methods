@@ -6,10 +6,10 @@ import java.io.IOException;
 
 public class FileUtilityClass {
 
-    public static void writeIntoFile(String fileName, String text) throws IOException {
+    private static void writeIntoFile(String fileName, String text, boolean append) throws IOException {
 
         try(
-                  BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {
+                  BufferedWriter bw = new BufferedWriter(new FileWriter(fileName,append))) {
 
                  bw.write(text);
         }
@@ -20,6 +20,25 @@ public class FileUtilityClass {
 
 
 
+
+
     }
+
+
+
+    public static void writeIntoFile(String fileName, String text) throws IOException {
+        writeIntoFile( fileName,text,false);
+
+
+}
+
+
+    public static void appendIntoFile(String fileName, String text) throws IOException {
+        writeIntoFile( fileName,text,true);
+
+
+    }
+
+
 
 }
